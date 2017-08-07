@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> {{title}} </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="deleteProduct()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    
+    <ion-item>
+      <ion-label floating>Nome do produto</ion-label>
+      <ion-input type="text"  [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Descrição</ion-label>
+      <ion-input type="text"  [(ngModel)]="product.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Preço do aluguel por dia</ion-label>
+      <ion-input type="number"  [(ngModel)]="product.price"></ion-input>
+    </ion-item>  
+    
+  </ion-list>
+
+  <p>
+    {{message}}
+  </p>
+
+  <button ion-button icon-left block (click)="saveData()"><ion-icon name="checkmark-circle"></ion-icon>Salvar dados</button>
+
+</ion-content>

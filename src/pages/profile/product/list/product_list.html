@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meus produtos</ion-title>
+    <!--<ion-buttons end>
+      <button ion-button icon-only (click)="newProduct()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-product-list">
+
+  <div *ngIf="showSpinner" text-center>
+    <ion-spinner ></ion-spinner>
+  </div>
+
+  <ion-fab bottom right >
+   <button ion-fab color="secondary" (click)="newProduct()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-list >    
+    <ion-card ion-item margin-bottom="2px"  *ngFor="let item of items" (click)="itemTapped($event, item)">      
+      <ion-card-content>
+         <ion-card-title>
+          {{item.product.name}} 
+        </ion-card-title>
+        {{item.product.description}} <span color="secondary">(R$ {{item.product.price}})</span>
+      </ion-card-content>
+      
+    </ion-card>
+  </ion-list>
+
+</ion-content>

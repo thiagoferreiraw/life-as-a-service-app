@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> {{title}} </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="deleteProduct()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>{{product.name}}</h2>
+  <p>{{product.description}}</p>
+  <p>R$ {{product.price}} por dia</p>
+
+  <ion-item>
+    <ion-range min="1" max="7" step="1" [(ngModel)]="rent.days" (ionChange)="calc_total_value()">
+      <ion-icon small range-left name="time"></ion-icon>
+      <ion-icon range-right name="time"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <p> Quantidade de dias: {{rent.days}}</p>
+    <p> Valor total: {{rent.total_value}}</p>
+  </ion-item>
+
+    <p>
+      {{message}}
+    </p>
+
+    <button ion-button icon-left block (click)="saveData()">
+      <ion-icon name="checkmark-circle"></ion-icon>Solicitar Aluguel
+    </button>
+
+</ion-content>
