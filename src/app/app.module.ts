@@ -7,6 +7,8 @@ import { Loading } from '../pages/loading/loading';
 import { Profile } from '../pages/profile/profile';
 import { ProductList } from '../pages/profile/product/list/product_list';
 import { ProductEdit } from '../pages/profile/product/edit/product_edit';
+import { RentList } from '../pages/profile/rent/list/rent_list';
+import { RentEdit } from '../pages/profile/rent/edit/rent_edit';
 import { ProductRent } from '../pages/product_rent/product_rent';
 import { Home } from '../pages/home/home';
 import { SignUp } from '../pages/signup/signup';
@@ -14,6 +16,7 @@ import { Logout } from '../pages/logout/logout';
 //import { DataService } from '../providers/data/data.service';
 import { UserService } from '../providers/user/user.service';
 import { ProductService } from '../providers/product/product.service';
+import { RentService } from '../providers/rent/rent.service';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 
@@ -29,6 +32,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ProductList,
     ProductEdit,
     ProductRent,
+    RentEdit,
+    RentList,
     Loading,
     SignUp
   ],
@@ -46,6 +51,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ProductList,
     ProductEdit,
     ProductRent,
+    RentEdit,
+    RentList,
     Loading,
     SignUp
   ],
@@ -53,6 +60,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     ProductService,
+    RentService,
     Camera,
     ImagePicker
   ]

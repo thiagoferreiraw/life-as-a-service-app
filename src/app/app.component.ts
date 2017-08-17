@@ -5,6 +5,7 @@ import { Page2 } from '../pages/page2/page2';
 import { Loading } from '../pages/loading/loading';
 import { Profile } from '../pages/profile/profile';
 import { ProductList } from '../pages/profile/product/list/product_list';
+import { RentList } from '../pages/profile/rent/list/rent_list';
 import { Home } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import { Logout } from '../pages/logout/logout';
@@ -26,6 +27,7 @@ export class MyApp {
   pages: Array<{ title: string, component: any }> = [
       { title: 'Início', component: Home },
       { title: 'Meus Produtos', component: ProductList },
+      { title: 'Meus Aluguéis', component: RentList },
       { title: 'Perfil', component: Profile },
       { title: 'Page Two', component: Page2 },
       { title: 'Logout', component: Logout }

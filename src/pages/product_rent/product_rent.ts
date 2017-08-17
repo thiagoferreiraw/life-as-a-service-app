@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
-import { LoadingController, NavParams, AlertController, NavController,ToastController  } from 'ionic-angular';
-import {ProductService} from "../../providers/product/product.service"
+import { LoadingController, NavParams, AlertController, NavController, ToastController } from 'ionic-angular';
+import { RentService } from "../../providers/rent/rent.service"
 
 
 
@@ -12,20 +12,20 @@ import {ProductService} from "../../providers/product/product.service"
 })
 export class ProductRent {
 
-  title:string="Alugar produto";
-  loading:any;
-  product:any;
-  key:string;
-  rent:any;
+  title: string = "Alugar produto";
+  loading: any;
+  product: any;
+  key: string;
+  rent: any;
 
   constructor(public loadingCtrl: LoadingController,
-              public navParams: NavParams,
-              public productService: ProductService,
-              public alertCtrl: AlertController,
-              public navCtrl: NavController,
-              public toastCtrl: ToastController,
-              private camera: Camera,
-              private imagePicker: ImagePicker) {
+    public navParams: NavParams,
+    public rentService: RentService,
+    public alertCtrl: AlertController,
+    public navCtrl: NavController,
+    public toastCtrl: ToastController,
+    private camera: Camera,
+    private imagePicker: ImagePicker) {
 
     this.loading = loadingCtrl.create();
 
@@ -41,20 +41,20 @@ export class ProductRent {
     this.calc_total_value();
   }
 
-  public calc_total_value(){    
-    this.rent.total_value = this.rent.days * parseFloat(this.rent.price_per_day);        
+  public calc_total_value() {
+    this.rent.total_value = this.rent.days * parseFloat(this.rent.price_per_day);
   }
 
-  public saveData(){
+  public saveData() {
     var toast = this.toastCtrl.create({
-                  message: 'Produto salvo com sucesso!',
-                  duration: 3000
-                });
+      message: 'Produto salvo com sucesso!',
+      duration: 3000
+    });
 
-    this.productService.saveProductRent(this.key, this.product, this.rent)
-      .then(()=>{
+    this.rentService.saveProductRent(this.product, this.rent)
+      .then(() => {
         toast.present();
       });
-    
+
   }
 }
