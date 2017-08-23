@@ -21,8 +21,8 @@ export class RentService {
     rent.product = product;
     rent.rent_id = key;
     rent.status = "pending"
-    update['/users/' + rent.user_id_requester + "/rent_request/" + key] = rent;
-    update['/users/' + rent.user_id_owner + "/rent_provided/" + key] = rent;  
+    update['/users/' + rent.user_id_requester + "/borrowings/" + key] = rent;
+    update['/users/' + rent.user_id_owner + "/lendings/" + key] = rent;  
     //update['/products/' + product.product_id + "/rents_pending/" + key] = rent;
     return firebase.database().ref().update(update);
 
@@ -31,22 +31,22 @@ export class RentService {
   public aproveRent(rent){
     var update = {}
     rent.status = "aproved"    
-    update['/users/' + rent.user_id_requester + "/rent_request/" + rent.rent_id] = rent;
-    update['/users/' + rent.user_id_owner + "/rent_provided/" + rent.rent_id] = rent;  
+    update['/users/' + rent.user_id_requester + "/borrowings/" + rent.rent_id] = rent;
+    update['/users/' + rent.user_id_owner + "/lendings/" + rent.rent_id] = rent;  
     return firebase.database().ref().update(update);
   }
 
   public rejectRent(rent){
     var update = {}
     rent.status = "rejected"    
-    update['/users/' + rent.user_id_requester + "/rent_request/" + rent.rent_id] = rent;
-    update['/users/' + rent.user_id_owner + "/rent_provided/" + rent.rent_id] = rent;  
+    update['/users/' + rent.user_id_requester + "/borrowings/" + rent.rent_id] = rent;
+    update['/users/' + rent.user_id_owner + "/lendings/" + rent.rent_id] = rent;  
     return firebase.database().ref().update(update);
   }  
 
   public getUserRents() {
     return firebase.database()
-      .ref('/users/' + firebase.auth().currentUser.uid + "/rent_provided/");
+      .ref('/users/' + firebase.auth().currentUser.uid + "/lendings/");
   }
 
 
