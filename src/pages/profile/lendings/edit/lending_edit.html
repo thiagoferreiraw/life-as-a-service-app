@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> {{title}} </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <b>Solicitado por: </b> {{rent.user_id_requester}}
+    </ion-item>
+    <ion-item>
+      <b>Dias: </b> {{rent.days}}
+    </ion-item>
+    <ion-item>
+      <b>Valor por dia: </b> {{rent.price_per_day}}
+    </ion-item>
+    <ion-item>
+      <b>Valor total: </b> {{rent.total_value}}
+    </ion-item>    
+
+  </ion-list>
+
+  <button ion-button icon-left block (click)="aproveRent()"><ion-icon name="checkmark-circle"></ion-icon>Aprovar</button>
+  <button ion-button icon-left block (click)="rejectRent()"><ion-icon name="checkmark-circle"></ion-icon>Rejeitar</button>
+
+</ion-content>
