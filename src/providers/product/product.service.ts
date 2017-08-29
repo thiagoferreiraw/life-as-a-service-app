@@ -8,6 +8,10 @@ export class ProductService {
 
   }
 
+  public getProduct(product_id){
+    return firebase.database().ref("/products/"+product_id).once('value')
+  }
+
   public getUserProducts() {
     return firebase.database()
       .ref('/users/' + this.getCurrentUser().uid + "/products/");
@@ -58,5 +62,5 @@ export class ProductService {
       .once("value")
   }
 
- 
+
 }

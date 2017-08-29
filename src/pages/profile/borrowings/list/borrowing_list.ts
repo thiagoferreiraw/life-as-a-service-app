@@ -19,12 +19,15 @@ export class BorrowingList {
     this.rentService.getUserBorrowings()
       .on('value', (data)=> {        
         data = data.val();
-        this.items = [];                  
+        this.items = [];                         
+
         for (var key in data){          
           this.items.push(
             {rent: data[key], key: key}
           );
         }
+
+        
         console.log(this.items)
         this.showSpinner = false;
         this.zone.run(()=>{}); //atualiza a tela
