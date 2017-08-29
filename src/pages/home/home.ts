@@ -2,6 +2,7 @@ import { Component, NgZone } from '@angular/core';
 
 import { NavController  } from 'ionic-angular';
 import {ProductService} from "../../providers/product/product.service"
+import {UserService} from "../../providers/user/user.service"
 import {ProductRent} from "../product_rent/product_rent"
 
 @Component({
@@ -16,6 +17,7 @@ export class Home {
   myInput:string;
 
   public constructor(public productService: ProductService, 
+                      public userService: UserService,    
                       public zone: NgZone,
                       public navCtrl: NavController,) {
 
@@ -24,7 +26,12 @@ export class Home {
       data = data.val();
 
       this.items = [];          
-      for (var key in data){          
+      for (var key in data){      
+
+        // only show products by other users
+        if (data[key].user_id === this.userService.getCurrentUser().uid)
+          continue;
+        
         this.items.push(
           {product: data[key], key: key}
         );

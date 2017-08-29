@@ -5,6 +5,7 @@ import { Loading } from '../pages/loading/loading';
 import { Profile } from '../pages/profile/profile';
 import { ProductList } from '../pages/profile/product/list/product_list';
 import { LendingList } from '../pages/profile/lendings/list/lending_list';
+import { BorrowingList } from '../pages/profile/borrowings/list/borrowing_list';
 import { Home } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import { Logout } from '../pages/logout/logout';
@@ -26,7 +27,8 @@ export class MyApp {
   pages: Array<{ title: string, component: any }> = [
       { title: 'Início', component: Home },
       { title: 'Meus Produtos', component: ProductList },
-      { title: 'Meus Aluguéis', component: LendingList },
+      { title: 'Meus Empréstimos', component: LendingList },
+      { title: 'Minhas solicitações', component: BorrowingList },
       { title: 'Perfil', component: Profile },
       { title: 'Logout', component: Logout }
     ];

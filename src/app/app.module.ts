@@ -8,6 +8,8 @@ import { ProductList } from '../pages/profile/product/list/product_list';
 import { ProductEdit } from '../pages/profile/product/edit/product_edit';
 import { LendingList} from '../pages/profile/lendings/list/lending_list';
 import { LendingEdit } from '../pages/profile/lendings/edit/lending_edit';
+import { BorrowingList } from '../pages/profile/borrowings/list/borrowing_list';
+import { BorrowingEdit } from '../pages/profile/borrowings/edit/borrowing_edit';
 import { ProductRent } from '../pages/product_rent/product_rent';
 import { Home } from '../pages/home/home';
 import { SignUp } from '../pages/signup/signup';
@@ -32,6 +34,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ProductRent,
     LendingEdit,
     LendingList,
+    BorrowingList,
+    BorrowingEdit,
     Loading,
     SignUp
   ],
@@ -50,6 +54,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ProductRent,
     LendingEdit,
     LendingList,
+    BorrowingList,
+    BorrowingEdit,    
     Loading,
     SignUp
   ],

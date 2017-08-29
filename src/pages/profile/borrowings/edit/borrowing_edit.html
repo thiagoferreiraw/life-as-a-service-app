@@ -13,21 +13,28 @@
   <ion-list>
 
     <ion-item>
-      <b>Solicitado por: </b> {{rent.user_id_requester}}
-    </ion-item>
-    <ion-item>
-      <b>Dias: </b> {{rent.days}}
-    </ion-item>
-    <ion-item>
-      <b>Valor por dia: </b> {{rent.price_per_day}}
-    </ion-item>
-    <ion-item>
-      <b>Valor total: </b> {{rent.total_value}}
+      <b>Solicitado para: </b> {{rent.user_id_requester}}
     </ion-item>    
+    <ion-item>
+      <b>Data inicial: </b> {{rent.date_start}}
+    </ion-item>
+    <ion-item>
+      <b>Data devolução: </b> {{rent.date_end}}
+    </ion-item>
+    <ion-item>
+      <b>Quantidade de Dias: </b> {{rent.days}}
+    </ion-item>
+    <ion-item>
+      <b>Valor por dia: </b> R$ {{rent.price_per_day}}
+    </ion-item>
+    <ion-item>
+      <b>Valor total: </b> R$ {{rent.total_value}}
+    </ion-item>  
+    <ion-item>
+      <span class="rent-status {{rent.status}}"><b>Status: </b> {{rent.status_pretty}}</span>
+    </ion-item>  
+      
 
   </ion-list>
-
-  <button ion-button icon-left block (click)="aproveRent()"><ion-icon name="checkmark-circle"></ion-icon>Aprovar</button>
-  <button ion-button icon-left block (click)="rejectRent()"><ion-icon name="checkmark-circle"></ion-icon>Rejeitar</button>
 
 </ion-content>

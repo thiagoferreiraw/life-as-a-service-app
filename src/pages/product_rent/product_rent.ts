@@ -3,8 +3,7 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { LoadingController, NavParams, AlertController, NavController, ToastController } from 'ionic-angular';
 import { RentService } from "../../providers/rent/rent.service"
-
-
+import { DateUtils} from "../../app/utils"
 
 @Component({
   selector: 'page-product-rent',
@@ -35,19 +34,22 @@ export class ProductRent {
     this.rent = {
       total_value: 0,
       days: 1,
-      price_per_day: this.product.price
+      price_per_day: this.product.price,
+      date_start: new Date().toISOString(),
+      date_end: new Date().toISOString()
     }
 
     this.calc_total_value();
   }
 
   public calc_total_value() {
+    this.rent.date_end = DateUtils.addDays(this.rent.date_start, this.rent.days);
     this.rent.total_value = this.rent.days * parseFloat(this.rent.price_per_day);
   }
 
   public saveData() {
     var toast = this.toastCtrl.create({
-      message: 'Produto salvo com sucesso!',
+      message: 'Aluguel solicitado com sucesso! Aguarde aprovação!',
       duration: 3000
     });
 
@@ -57,4 +59,5 @@ export class ProductRent {
       });
 
   }
+
 }

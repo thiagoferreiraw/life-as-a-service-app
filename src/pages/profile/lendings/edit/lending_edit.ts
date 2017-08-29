@@ -10,7 +10,7 @@ import { RentService } from "../../../../providers/rent/rent.service"
 })
 export class LendingEdit {
 
-  title: string = "Editar aluguel";
+  title: string = "Editar empréstimo";
   loading: any;
   rent: any;
   key: string;
@@ -27,6 +27,10 @@ export class LendingEdit {
     this.loading = loadingCtrl.create();
 
     this.rent = navParams.get('rent').rent;
+
+    this.rent['status_pretty'] = (this.rent.status === "pending" ? 
+                                  "Pendente": 
+                                  (this.rent.status === "aproved"? "Aprovado": "Rejeitado"))                                    
     console.log(this.rent)
 
   }

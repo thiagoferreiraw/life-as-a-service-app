@@ -44,11 +44,15 @@ export class RentService {
     return firebase.database().ref().update(update);
   }  
 
-  public getUserRents() {
+  public getUserLendings() {
     return firebase.database()
       .ref('/users/' + firebase.auth().currentUser.uid + "/lendings/");
   }
 
 
+  public getUserBorrowings() {
+    return firebase.database()
+      .ref('/users/' + firebase.auth().currentUser.uid + "/borrowings/");
+  }
 
 }

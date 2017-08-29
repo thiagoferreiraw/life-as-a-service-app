@@ -3,17 +3,23 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title> {{title}} </ion-title>    
+    <ion-title> {{title}} </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <h2>{{product.name}}</h2>
-  <p>{{product.description}}</p>
-  <p>R$ {{product.price}} por dia</p>
+  <p><b>Descrição: </b>{{product.description}}</p>
+  <p><b>Preço: </b>R$ {{product.price}} por dia</p>
 
   <ion-item>
-    <ion-range min="1" max="7" step="1" [(ngModel)]="rent.days" (ionChange)="calc_total_value()">
+    <ion-label>Data inicial</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="rent.date_start"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Quantidade de dias de aluguel</ion-label>
+    <ion-range min="1" max="{{product.rent_limit_days}}" step="1" [(ngModel)]="rent.days" (ionChange)="calc_total_value()">
       <ion-icon small range-left name="time"></ion-icon>
       <ion-icon range-right name="time"></ion-icon>
     </ion-range>
@@ -24,11 +30,11 @@
     <p> Valor total: {{rent.total_value}}</p>
   </ion-item>
 
-    <p>
-      {{message}}
-    </p>
+  <p>
+    {{message}}
+  </p>
 
-    <button ion-button icon-left block (click)="saveData()">
+  <button ion-button icon-left block (click)="saveData()">
       <ion-icon name="checkmark-circle"></ion-icon>Solicitar Aluguel
     </button>
 

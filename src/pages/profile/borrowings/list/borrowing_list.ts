@@ -16,7 +16,7 @@ export class BorrowingList {
 
   public constructor(public navCtrl: NavController, public navParams: NavParams, public rentService: RentService,private zone:NgZone) {    
 
-    this.rentService.getUserRents()
+    this.rentService.getUserBorrowings()
       .on('value', (data)=> {        
         data = data.val();
         this.items = [];                  

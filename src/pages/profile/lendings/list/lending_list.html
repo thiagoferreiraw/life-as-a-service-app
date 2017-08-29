@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meus aluguéis</ion-title>
+    <ion-title>Meus empréstimos</ion-title>
     <!--<ion-buttons end>
       <button ion-button icon-only (click)="newProduct()">
         <ion-icon name="add"></ion-icon>
@@ -18,20 +18,18 @@
   <div *ngIf="showSpinner" text-center>
     <ion-spinner ></ion-spinner>
   </div>
-
-  <ion-fab bottom right >
-   <button ion-fab color="secondary" (click)="newProduct()"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-
+  
   <ion-list >    
     <ion-card ion-item margin-bottom="2px"  *ngFor="let item of items" (click)="itemTapped($event, item)">      
       <ion-card-content>
          <ion-card-title>           
            {{item.rent.product.name}}          
         </ion-card-title>
-          <p>
-            [{{item.rent.status}}], solicitado por {{item.rent.days}} dias, 
-            totalizando o valor de {{item.rent.total_value}}      
+         <p>
+            <span class="{{item.rent.status}}">[{{(item.rent.status === "pending" ? 
+                                  "Pendente": 
+                                  (item.rent.status === "aproved"? "Aprovado": "Rejeitado")
+                                )}}]</span> - {{item.rent.days}} dias - R$ {{item.rent.total_value}}                   
          </p>
       </ion-card-content>
       
