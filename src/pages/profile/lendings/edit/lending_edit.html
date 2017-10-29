@@ -8,37 +8,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color: #eee">
+  <ion-card style="background-color: #fff">
+    <ion-card-header>
+      <b>{{rent.product.name}}</b>
+    </ion-card-header>
+    <ion-card-content>
+        <p><b><ion-icon name="person"></ion-icon> Solicitado por: </b></p>
+        <p>{{rent.user_email_requester}}</p>        
+        <p><b><ion-icon name="calendar"></ion-icon> Período</b></p>   
+        <p>{{rent.days}} dias</p>       
+        <p>{{ rent.date_start | date: 'dd/MM/yyyy' }} até {{ rent.date_end | date: 'dd/MM/yyyy' }}</p>
+        <p><b><ion-icon name="cash"></ion-icon> Valores</b></p>
+        <p>Por dia: R$ {{rent.price_per_day}}</p>
+        <p>Total: R$ {{rent.total_value}}</p>
+        <hr/>
+        <span class="rent-status {{rent.status}}"><b>Status: </b> {{rent.status_pretty}}</span>            
+        <div *ngIf="rent.status === 'pending'">
+            <hr/>
+            <button ion-button icon-left block (click)="aproveRent()"><ion-icon name="checkmark-circle"></ion-icon>Aprovar</button>
+            <button ion-button icon-left block (click)="rejectRent()" color="danger"><ion-icon name="close"></ion-icon>Rejeitar</button>
+        </div>  
+      </ion-card-content>
+  </ion-card>
 
-  <ion-list>
-
-    <ion-item>
-      <b>Solicitado por: </b> {{rent.user_id_requester}}
-    </ion-item>    
-    <ion-item>
-      <b>Data inicial: </b> {{rent.date_start}}
-    </ion-item>
-    <ion-item>
-      <b>Data devolução: </b> {{rent.date_end}}
-    </ion-item>
-    <ion-item>
-      <b>Quantidade de Dias: </b> {{rent.days}}
-    </ion-item>
-    <ion-item>
-      <b>Valor por dia: </b> R$ {{rent.price_per_day}}
-    </ion-item>
-    <ion-item>
-      <b>Valor total: </b> R$ {{rent.total_value}}
-    </ion-item>  
-    <ion-item>
-      <span class="rent-status {{rent.status}}"><b>Status: </b> {{rent.status_pretty}}</span>
-    </ion-item>  
-
-  </ion-list>
-
-  <div *ngIf="rent.status === 'pending'">
-    <button ion-button icon-left block (click)="aproveRent()"><ion-icon name="checkmark-circle"></ion-icon>Aprovar</button>
-    <button ion-button icon-left block (click)="rejectRent()" color="danger"><ion-icon name="close"></ion-icon>Rejeitar</button>
-  </div>  
 
 </ion-content>
